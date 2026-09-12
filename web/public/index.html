@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pack&amp;Go — Packed with care. Settled with ease.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2340;
+    --ink-soft:#2B3560;
+    --paper:#F1ECDD;
+    --paper-2:#E7DFC7;
+    --marigold:#E8A33D;
+    --marigold-dark:#C97F1F;
+    --jade:#2F6F62;
+    --jade-soft:#DCE9E3;
+    --charcoal:#22201B;
+    --cream-text:#F3EEE1;
+    --line:#D9D0B4;
+    --radius-tag: 10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  img,svg{display:block;max-width:100%;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(241,236,221,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;font-size:1.28rem;color:var(--ink);
+  }
+  .logo-mark{
+    width:30px;height:30px;border-radius:7px;
+    background:var(--marigold);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);font-weight:700;font-size:0.95rem;
+  }
+  .nav-links{display:flex;gap:36px;align-items:center;}
+  .nav-links a{font-size:0.95rem;color:var(--ink-soft);font-weight:500;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:12px 22px;border-radius:8px;font-weight:600;font-size:0.95rem;
+    border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--marigold);color:var(--ink);}
+  .btn-primary:hover{background:var(--marigold-dark);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent;}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream-text);}
+  .btn-on-dark{border-color:var(--cream-text);color:var(--cream-text);}
+  .btn-on-dark:hover{background:var(--cream-text);color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 84px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .eyebrow-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border:1px solid var(--jade);color:var(--jade);
+    border-radius:999px;font-size:0.82rem;font-weight:600;margin-bottom:22px;
+  }
+  .eyebrow-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--jade);}
+  h1.headline{font-size:3.4rem;line-height:1.06;font-weight:700;}
+  .hero p.sub{
+    margin-top:22px;font-size:1.12rem;color:var(--ink-soft);max-width:480px;
+  }
+  .hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .trust-row{
+    display:flex;gap:40px;margin-top:52px;padding-top:28px;border-top:1px solid var(--line);
+  }
+  .trust-row .num{font-family:'Space Grotesk';font-size:1.6rem;font-weight:700;color:var(--ink);}
+  .trust-row .lbl{font-size:0.85rem;color:var(--ink-soft);margin-top:2px;}
+
+  /* hero visual */
+  .hero-visual{position:relative;height:440px;}
+  .route-card{
+    position:absolute;inset:0;background:var(--ink);border-radius:18px;overflow:hidden;
+  }
+  .route-svg{position:absolute;inset:0;width:100%;height:100%;}
+  .tag-float{
+    position:absolute;bottom:24px;left:24px;width:220px;
+    background:var(--paper);color:var(--charcoal);
+    padding:16px 16px 16px 20px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.28);
+    clip-path: path('M0,10 C0,4.5 4.5,0 10,0 H190 C195.5,0 200,4.5 200,10 V150 L 175 175 L 200 200 V 240 C200,245.5 195.5,250 190,250 H10 C4.5,250 0,245.5 0,240 Z');
+  }
+  .tag-hole{position:absolute;right:16px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:2px solid var(--ink);}
+  .tag-float .qr{
+    width:56px;height:56px;
+    background:
+      linear-gradient(var(--ink) 0 0) 0 0/12px 12px,
+      linear-gradient(var(--ink) 0 0) 16px 0/12px 12px,
+      linear-gradient(var(--ink) 0 0) 0 16px/24px 12px,
+      linear-gradient(var(--ink) 0 0) 32px 16px/12px 24px,
+      linear-gradient(var(--ink) 0 0) 0 40px/40px 12px,
+      var(--paper-2);
+    background-repeat:no-repeat;
+    border-radius:4px;margin-bottom:12px;
+  }
+  .tag-float .carton{font-family:'Space Grotesk';font-weight:600;font-size:0.95rem;}
+  .tag-float .meta{font-size:0.8rem;color:var(--ink-soft);margin-top:4px;}
+  .tag-float .verified{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    font-size:0.78rem;font-weight:600;color:var(--jade);
+  }
+  .tag-float .verified .check{
+    width:14px;height:14px;border-radius:50%;background:var(--jade);
+    display:flex;align-items:center;justify-content:center;color:white;font-size:9px;
+  }
+
+  /* ---------- FRAGMENTED SECTION ---------- */
+  .fragment{padding:70px 0;border-top:1px solid var(--line);}
+  .fragment .head{max-width:620px;margin-bottom:44px;}
+  .fragment h2{font-size:2rem;}
+  .fragment .head p{color:var(--ink-soft);margin-top:14px;font-size:1.03rem;}
+  .apps-row{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .app-chip{
+    padding:10px 16px;border:1px solid var(--line);border-radius:8px;
+    font-size:0.9rem;color:var(--ink-soft);background:white;
+  }
+  .fold-arrow{font-family:'Space Grotesk';font-size:1.4rem;color:var(--jade);padding:0 4px;}
+  .one-chip{
+    padding:10px 18px;border-radius:8px;background:var(--ink);color:var(--cream-text);
+    font-weight:600;font-size:0.9rem;
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features{padding:80px 0;border-top:1px solid var(--line);}
+  .features .head{max-width:640px;margin-bottom:48px;}
+  .features h2{font-size:2rem;}
+  .feature-grid{
+    display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:22px;
+  }
+  .feature-panel{
+    border:1px solid var(--line);border-radius:12px;padding:28px;background:white;
+  }
+  .feature-panel h3{font-size:1.15rem;margin-bottom:10px;}
+  .feature-panel p{color:var(--ink-soft);font-size:0.94rem;}
+  .feature-panel .icon{
+    width:38px;height:38px;border-radius:9px;background:var(--jade-soft);color:var(--jade);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.1rem;
+  }
+  /* the passport feature gets the tag shape as its distinctive structural device */
+  .feature-panel.passport{
+    grid-row:span 2;
+    background:var(--ink);color:var(--cream-text);
+    border:none;position:relative;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 92% 100%, 0 100%);
+    padding-bottom:52px;
+  }
+  .feature-panel.passport h3{color:var(--cream-text);}
+  .feature-panel.passport p{color:#C7CBDA;}
+  .feature-panel.passport .icon{background:rgba(232,163,61,0.16);color:var(--marigold);}
+  .feature-panel.passport .hole{
+    position:absolute;top:24px;right:24px;width:16px;height:16px;border-radius:50%;
+    background:var(--ink);border:2px solid #4A5480;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{padding:80px 0;border-top:1px solid var(--line);background:var(--paper-2);}
+  .how .head{max-width:600px;margin-bottom:48px;}
+  .how h2{font-size:2rem;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .steps::before{
+    content:"";position:absolute;top:19px;left:6%;right:6%;height:2px;
+    background:repeating-linear-gradient(to right, var(--ink) 0 8px, transparent 8px 14px);
+  }
+  .step{position:relative;padding-right:18px;}
+  .step .num{
+    width:40px;height:40px;border-radius:50%;background:var(--paper-2);border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;
+    color:var(--ink);position:relative;z-index:2;margin-bottom:18px;
+  }
+  .step h3{font-size:1.02rem;margin-bottom:8px;}
+  .step p{font-size:0.88rem;color:var(--ink-soft);}
+
+  /* ---------- OUTCOMES (dark) ---------- */
+  .outcomes{background:var(--ink);color:var(--cream-text);padding:84px 0;}
+  .outcomes .head{max-width:580px;margin-bottom:48px;}
+  .outcomes h2{color:var(--cream-text);font-size:2rem;}
+  .outcomes .head p{color:#B9BEDA;margin-top:14px;}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .stat .big{font-family:'Space Grotesk';font-size:2.5rem;font-weight:700;color:var(--marigold);}
+  .stat .lbl{font-size:0.88rem;color:#B9BEDA;margin-top:8px;max-width:200px;}
+
+  /* ---------- CAMPUS ---------- */
+  .campus{padding:80px 0;border-top:1px solid var(--line);}
+  .campus-card{
+    background:var(--jade);color:white;border-radius:16px;padding:48px;
+    display:grid;grid-template-columns:1.3fr 0.7fr;gap:32px;align-items:center;
+  }
+  .campus-card h2{color:white;font-size:1.7rem;}
+  .campus-card p{color:#DCEFE9;margin-top:12px;max-width:480px;}
+  .campus-card .btn-primary{background:white;color:var(--jade);}
+  .campus-card .btn-primary:hover{background:#F1ECDD;}
+
+  /* ---------- FOOTER CTA ---------- */
+  .final-cta{padding:90px 0;text-align:center;}
+  .final-cta h2{font-size:2.3rem;max-width:640px;margin:0 auto;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:30px;}
+
+  footer{border-top:1px solid var(--line);padding:44px 0;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .footer-links{display:flex;gap:32px;flex-wrap:wrap;}
+  .footer-links a{font-size:0.88rem;color:var(--ink-soft);}
+  .footer-note{font-size:0.82rem;color:var(--ink-soft);margin-top:18px;}
+
+  @media (max-width:900px){
+    .hero-grid, .campus-card{grid-template-columns:1fr;}
+    .hero-visual{height:340px;}
+    .nav-links{display:none;}
+    h1.headline{font-size:2.4rem;}
+    .feature-grid{grid-template-columns:1fr;}
+    .feature-panel.passport{grid-row:auto;}
+    .steps{grid-template-columns:1fr;gap:28px;}
+    .steps::before{display:none;}
+    .stat-grid{grid-template-columns:1fr 1fr;row-gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="logo-mark">P</span>Pack&amp;Go</div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#campus">For campuses</a>
+      <a href="#" class="btn btn-ghost" style="padding:9px 18px;">Sign in</a>
+    </div>
+    <a href="#" class="btn btn-primary">Get a quote</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow-tag"><span class="dot"></span>Now booking in 12 cities</span>
+      <h1 class="headline">Packed with care.<br>Settled with ease.</h1>
+      <p class="sub">One booking replaces the mover, the furniture rental, the resale app, and the room search — with a price locked in before the truck ever leaves.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary">Scan your room, get a price</a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="trust-row">
+        <div><div class="num">30–50%</div><div class="lbl">lower than a solo truck</div></div>
+        <div><div class="num">100%</div><div class="lbl">QR-tracked cartons</div></div>
+        <div><div class="num">12</div><div class="lbl">cities live</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="route-card">
+        <svg class="route-svg" viewBox="0 0 480 440" preserveAspectRatio="xMidYMid slice">
+          <circle cx="90" cy="80" r="7" fill="#E8A33D"/>
+          <circle cx="90" cy="80" r="14" fill="none" stroke="#E8A33D" stroke-width="1.5" opacity="0.5"/>
+          <path d="M90,80 C 170,140 190,220 260,250 S 380,300 400,360" fill="none" stroke="#4A5480" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
+          <circle cx="400" cy="360" r="7" fill="#2F6F62"/>
+          <circle cx="400" cy="360" r="14" fill="none" stroke="#2F6F62" stroke-width="1.5" opacity="0.5"/>
+          <g transform="translate(255,225) rotate(35)">
+            <rect x="-16" y="-11" width="32" height="18" rx="3" fill="#F3EEE1"/>
+            <rect x="-16" y="-11" width="10" height="18" rx="3" fill="#E8A33D"/>
+            <circle cx="-9" cy="9" r="3.4" fill="#1B2340"/>
+            <circle cx="9" cy="9" r="3.4" fill="#1B2340"/>
+          </g>
+          <text x="106" y="72" fill="#F3EEE1" font-family="IBM Plex Sans" font-size="12">Move-out</text>
+          <text x="330" y="352" fill="#F3EEE1" font-family="IBM Plex Sans" font-size="12">Move-in</text>
+        </svg>
+      </div>
+      <div class="tag-float">
+        <div class="tag-hole"></div>
+        <div class="qr"></div>
+        <div class="carton">Carton #014</div>
+        <div class="meta">Books, winter clothes</div>
+        <div class="verified"><span class="check">✓</span>Pickup verified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fragment">
+  <div class="wrap">
+    <div class="head">
+      <h2>Right now, a move takes five apps.</h2>
+      <p>A mover for transport, a rental app for furniture, a resale app to offload the old stuff, a listings app for the new room, a services app once you've arrived. Pack&amp;Go replaces the whole stack with one booking.</p>
+    </div>
+    <div class="apps-row">
+      <span class="app-chip">Mover app</span>
+      <span class="app-chip">Furniture rental</span>
+      <span class="app-chip">Resale app</span>
+      <span class="app-chip">Room listings</span>
+      <span class="app-chip">Home services</span>
+      <span class="fold-arrow">→</span>
+      <span class="one-chip">Pack&amp;Go</span>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="head">
+      <h2>Everything the move needs, nothing it doesn't.</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-panel passport">
+        <div class="hole"></div>
+        <div class="icon">▤</div>
+        <h3>Digital Luggage Passport</h3>
+        <p>Every carton gets a QR tag linking to its contents, category, and condition photos — verified by OTP and GPS geofence at pickup and drop-off, so disputes end before they start.</p>
+      </div>
+      <div class="feature-panel">
+        <div class="icon">◎</div>
+        <h3>Scan, don't estimate</h3>
+        <p>A photo sweep or a short voice walkthrough of your room gives you carton count, labour, and a locked price — no surveyor visit, no changing quote at the door.</p>
+      </div>
+      <div class="feature-panel">
+        <div class="icon">⬡</div>
+        <h3>Shared truck, shared cost</h3>
+        <p>Compatible moves are pooled onto the same vehicle instead of chartering one that runs half-empty, and the savings come straight off your price.</p>
+      </div>
+      <div class="feature-panel">
+        <div class="icon">↻</div>
+        <h3>Sell it, don't dump it</h3>
+        <p>Hand off furniture and electronics you don't need directly to the next person moving into your building — or resell, rent, or recycle in a couple of taps.</p>
+      </div>
+      <div class="feature-panel">
+        <div class="icon">✦</div>
+        <h3>A room, already yours</h3>
+        <p>Pick a theme, and Pack&amp;Go furnishes it before you arrive. Bedding, water, groceries, and a tiffin subscription land the same day you do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>How a move actually happens</h2>
+      <p>Four steps, one booking, no second app.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Scan &amp; price</h3>
+        <p>Photo or voice sweep of your room gives you a locked price in minutes.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Pooled pickup</h3>
+        <p>Your move is grouped onto shared truck capacity — booked, OTP-verified, on your slot.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Tracked transit</h3>
+        <p>Every carton is QR-tagged and geofence-checked from your old door to your new one.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Move-in ready</h3>
+        <p>Room setup, essentials, and services land the day you do — not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="outcomes">
+  <div class="wrap">
+    <div class="head">
+      <h2>What pooling and tracking actually save you</h2>
+      <p>Numbers we're building toward, based on what pooled freight already proves at commercial scale.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="big">30–50%</div>
+        <div class="lbl">lower cost vs. chartering a full truck alone</div>
+      </div>
+      <div class="stat">
+        <div class="big">40%</div>
+        <div class="lbl">less idle vehicle time through route pooling</div>
+      </div>
+      <div class="stat">
+        <div class="big">0</div>
+        <div class="lbl">extra apps needed for the whole move</div>
+      </div>
+      <div class="stat">
+        <div class="big">100%</div>
+        <div class="lbl">of cartons photographed and QR-verified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="campus" id="campus">
+  <div class="wrap">
+    <div class="campus-card">
+      <div>
+        <h2>Semester-end, without the chaos.</h2>
+        <p>Campus Move Week groups an entire hostel's departures into shared collection hubs, group time slots, and discounted pooled fleets — with a live dashboard parents can follow.</p>
+      </div>
+      <div>
+        <a href="#" class="btn btn-primary">Bring it to your campus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Your next move can start with a photo, not a phone call.</h2>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary">Get an instant quote</a>
+      <a href="#" class="btn btn-ghost">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="logo"><span class="logo-mark">P</span>Pack&amp;Go</div>
+      <div class="footer-note">Packed with care. Settled with ease.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">How it works</a>
+      <a href="#">Features</a>
+      <a href="#">For campuses</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
